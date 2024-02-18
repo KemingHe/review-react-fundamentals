@@ -61,7 +61,21 @@
         return <h5>{homeTitle ? homeTitle : 'Default home'}</h5>;
       }
 
+      function clickHandler1() {
+        console.log('You clicked! Yeah.');
+      }
+
       function BetterHome() {
+
+        {/*
+          State is data in React,
+          numLikes1 is the value, setNumLikes1 (set+value) is the update function,
+          useState(0) defaults the numLikes1 value to 0.
+        */}
+        const [numLikes1, setNumLikes1] = React.useState(0);
+        function clickHandlerIn() {
+          setNumLikes1(numLikes1 + 1);
+        }
 
         const stuffToPrint = ['apple', 'banana', 'citrus', 'donut?'];
 
@@ -86,6 +100,10 @@
                 )
               }
             </ul>
+
+            <button onClick={clickHandler1}>Useless LikeButton ({numLikes1})</button>
+            <button onClick={clickHandlerIn}>LikeButton ({numLikes1})</button>
+
           </div>
         );
       }
