@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+  <head>
+    <title>React Review 1</title>
+  </head>
+
+  <body>
+    <h1>Hello World!</h1>
+    <div id='app'></div>
+    <script src='https://unpkg.com/react@18/umd/react.development.js'></script>
+    <script src='https://unpkg.com/react-dom@18/umd/react-dom.development.js'></script>
+
+    <!-- Adding Babel Script so we can write html-like js: -->
+    <script src='https://unpkg.com/@babel/standalone/babel.min.js'></script>
+    <script type='text/jsx'>
+
+      const app = document.getElementById('app');
+
+      /* Lesson 3
+      const root = ReactDOM.createRoot(app);
+      root.render(<h2>Hello hello hello work.</h2>);
+      */
+
+      /* Lesson 4
+      // Use components (functions) instead of hard-coding,
+      // Remember to 1. Capitalize and 2. add < />:
+      function Header3() {
+        return (<h3>This is getting fun.</h3>);
+      }
+
+      const newRoot = ReactDOM.createRoot(app);
+      newRoot.render(<Header3 />);
+      */
+
+      // Lesson 5 + 6
+      // React components can also be nested:
+      function Header4({ hint0, ...rest }) {
+        console.log(hint0);
+
+        {/* Using object destructuring to extract specific and general props.*/}
+        console.log(rest);
+        return <h4>{ hint0 }</h4>;
+        // Use {} to indicate a React variable when working with JSX.
+      }
+
+      function HomeText() {
+        return (
+          <div>
+            {/* This is how to comment inside function return.*/}
+            <Header4 
+              hint0='This one you can use'
+              hint1='Props are params'
+              hint2='data flows one-way down the comp tree'
+            />
+          </div>
+        );
+      }
+
+      function Header5({homeTitle, ...rest}) {
+        return <h5>{homeTitle ? homeTitle : 'Default home'}</h5>;
+      }
+
+      function BetterHome() {
+
+        const stuffToPrint = ['apple', 'banana', 'citrus', 'donut?'];
+
+        return (
+          <div>
+            <Header5 homeTitle='Wow, such nice home!'/>
+            <Header5 homeTitle='Blah, such so-so home.'/>
+            <Header5 landTitle='What is this?'/>
+
+            {/* 
+              Time for some arrow function practice.
+              And some list.map(function inside),
+                because why not.
+              Make sure to remember the key when iterating!
+            */}
+            <ul>
+              {
+                stuffToPrint.map(
+                  (oneStuff) => (
+                    <li key={oneStuff}>{oneStuff}</li>
+                  )
+                )
+              }
+            </ul>
+          </div>
+        );
+      }
+
+      const anotherRoot = ReactDOM.createRoot(app);
+      anotherRoot.render(<BetterHome />);
+    </script>
+  </body>
+
+</html>
+
