@@ -31,5 +31,5 @@ review-react-foundamentals/
 npm run dev
 ```
 
-4. Take a look at the comments, very help.
+4. Take a look at the comments, very helpful.
 
